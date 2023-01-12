@@ -8,22 +8,43 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="src\" />
     <None Remove="src\Controllers\" />
-    <None Remove="src\Dtos\" />
     <None Remove="src\Models\" />
     <None Remove="src\Repository\" />
     <None Remove="src\Services\" />
+    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
+    <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="src\Models\Dto\" />
+    <None Remove="src\Data\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Interfaces\Services\" />
+    <None Remove="Interfaces\Repositories\" />
+    <None Remove="Utilis\" />
+    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Swashbuckle.AspNetCore.Filters" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
     <Folder Include="src\Controllers\" />
-    <Folder Include="src\Dtos\" />
     <Folder Include="src\Models\" />
     <Folder Include="src\Repository\" />
     <Folder Include="src\Services\" />
+    <Folder Include="src\Models\Dto\" />
+    <Folder Include="src\Data\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Utilis\" />
   </ItemGroup>
 </Project>

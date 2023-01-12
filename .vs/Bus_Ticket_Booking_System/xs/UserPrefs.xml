@@ -1,4 +1,61 @@
 ﻿<Properties StartupConfiguration="{F1EA78EE-B3AB-45CA-BBA7-1252F7507D3B}|Default">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Bus__Ticket__Booking__System FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bus_Ticket_Booking_System/Interfaces/Services/IUserService.cs">
+    <Files>
+      <File FileName="Bus_Ticket_Booking_System/Interfaces/Repositories/IUserRepository.cs" Line="15" Column="1" IsPinned="True" />
+      <File FileName="Bus_Ticket_Booking_System/Program.cs" Line="31" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/UserModel.cs" Line="17" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Data/BusTicketDbContext.cs" Line="13" Column="51" />
+      <File FileName="Bus_Ticket_Booking_System/appsettings.json" Line="14" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/UserController.cs" Line="51" Column="46" />
+      <File FileName="Bus_Ticket_Booking_System/src/Services/UserService.cs" Line="9" Column="33" />
+      <File FileName="Bus_Ticket_Booking_System/src/Repository/UserRepository.cs" Line="20" Column="4" />
+      <File FileName="Bus_Ticket_Booking_System/Interfaces/Services/IUserRepository.cs" Line="10" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/Interfaces/Respositories/IUserService.cs" Line="17" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/Dto/UserAddRequest.cs" Line="12" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/BusModel.cs" Line="9" Column="13" />
+      <File FileName="Bus_Ticket_Booking_System/Interfaces/Repositories/IBusRepository.cs" Line="15" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/Interfaces/Services/IBusService.cs" Line="15" Column="2" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/BusController.cs" Line="52" Column="3" />
+      <File FileName="Bus_Ticket_Booking_System/src/Repository/BusRepository.cs" Line="53" Column="32" />
+      <File FileName="Bus_Ticket_Booking_System/src/Services/BusService.cs" Line="36" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/ResponseModel.cs" Line="10" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/AuthUtilis.cs" Line="13" Column="6" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/IJwtTokenUtilis.cs" Line="8" Column="44" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/JwtTokenUtilis.cs" Line="18" Column="51" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/Dto/UserAddLogin.cs" Line="4" Column="15" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Bus_Ticket_Booking_System" expanded="True">
+            <Node name="Bus_Ticket_Booking_System" expanded="True">
+              <Node name="Interfaces" expanded="True">
+                <Node name="Repositories" expanded="True" />
+                <Node name="Services" expanded="True" />
+              </Node>
+              <Node name="src" expanded="True">
+                <Node name="Controllers" expanded="True" />
+                <Node name="Data" expanded="True" />
+                <Node name="Models" expanded="True">
+                  <Node name="Dto" expanded="True" />
+                </Node>
+                <Node name="Repository" expanded="True" />
+                <Node name="Services" expanded="True">
+                  <Node name="UserService.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Utilis" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Bus__Ticket__Booking__System PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

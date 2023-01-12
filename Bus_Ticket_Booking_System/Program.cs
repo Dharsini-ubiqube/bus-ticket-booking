@@ -1,11 +1,62 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Bus_Ticket_Booking_System.Interfaces.Repositories;
+using Bus_Ticket_Booking_System.Interfaces.Services;
+using Bus_Ticket_Booking_System.src.Data;
+using Bus_Ticket_Booking_System.src.Repository;
+using Bus_Ticket_Booking_System.src.Services;
+using Bus_Ticket_Booking_System.Utilis;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standard Authorization using bearer scheme (\"Bearer {token}\" ) ",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+
+    c.OperationFilter<SecurityRequirementsOperationFilter>();
+});
+
+
+
+builder.Services.AddDbContext<BusTicketDbContext>(options =>
+{
+    var connString = builder.Configuration.GetConnectionString("DevConnection");
+    options.UseMySql(connString, ServerVersion.AutoDetect(connString));
+});
+
+builder.Services.AddTransient<IUserService , UserService>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IBusService, BusService>();
+builder.Services.AddTransient<IBusRepository, BusRepository>();
+builder.Services.AddSingleton <IJwtTokenUtilis, JwtTokenUtilis>();
+
+
+builder.Services.AddScoped<BusTicketDbContext>();
+
+
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+    options =>
+    {
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my favourite token is here thank you")),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 var app = builder.Build();
 
