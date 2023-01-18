@@ -11,6 +11,7 @@ namespace Bus_Ticket_Booking_System.Interfaces.Services
 
         public IEnumerable<BusModel> getAllbuses();
         public IEnumerable<BusModel> getBusById(int id);
+        public IEnumerable<BusModel> UpdateBusById(int id, BusModel busModel);
     }
 }
 

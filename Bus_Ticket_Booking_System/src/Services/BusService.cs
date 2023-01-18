@@ -36,6 +36,12 @@ namespace Bus_Ticket_Booking_System.src.Services
 		{
 			return (_busRepository.getBusById(id));
 		}
+        public IEnumerable<BusModel> UpdateBusById(int id , BusModel busModel)
+        {
+			return (_busRepository.UpdateBusById(id, busModel));
+        }
     }
+		
+    
 }
 

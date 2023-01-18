@@ -3,6 +3,7 @@ using System;
 using Bus_Ticket_Booking_System.src.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bus_Ticket_Booking_System.Migrations
 {
     [DbContext(typeof(BusTicketDbContext))]
-    partial class BusTicketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230112104607_busmodel_added_update_db")]
+    partial class busmodel_added_update_db
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,21 +51,6 @@ namespace Bus_Ticket_Booking_System.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Buses");
-                });
-
-            modelBuilder.Entity("Bus_Ticket_Booking_System.src.Models.LocationModel", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("location")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("Bus_Ticket_Booking_System.src.Models.UserModel", b =>

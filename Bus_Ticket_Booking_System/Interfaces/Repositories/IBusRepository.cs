@@ -9,6 +9,7 @@ namespace Bus_Ticket_Booking_System.Interfaces.Repositories
         public string deleteBuses(int id);
         public IEnumerable<BusModel> getAllbuses();
         public IEnumerable<BusModel> getBusById(int id);
+        public IEnumerable<BusModel> UpdateBusById(int id, BusModel busModel);
     }
 }
 

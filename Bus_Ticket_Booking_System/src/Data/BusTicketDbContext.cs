@@ -11,6 +11,7 @@ namespace Bus_Ticket_Booking_System.src.Data
         }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<BusModel> Buses { get; set; }
+        public DbSet<LocationModel> Locations { get; set; }
     }
 }
 

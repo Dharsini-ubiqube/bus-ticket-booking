@@ -52,6 +52,22 @@ namespace Bus_Ticket_Booking_System.src.Repository
 
             yield return (bus);
         }
+        public  IEnumerable <BusModel> UpdateBusById(int id, BusModel busModel)
+        {
+            var Bus = _busTicketDbContext.Buses.Find(id);
+            if(Bus != null)
+            {
+                Bus.BusName = busModel.BusName;
+                Bus.BoardingLocation = busModel.BoardingLocation;
+                Bus.DestinationLocation = busModel.DestinationLocation;
+                Bus.time = busModel.time;
+                Bus.price = busModel.price;
+                Bus.seats = busModel.seats;
+                _busTicketDbContext.SaveChanges();
+                
+            }
+            throw new Exception("Not found");
+        }
     }
 }
 

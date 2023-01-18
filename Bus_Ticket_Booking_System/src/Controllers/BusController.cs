@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
-    [Authorize]
+   
     public class BusController : ControllerBase
 	{
 		private readonly IBusService _busService;
@@ -69,6 +69,18 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 				return BadRequest(e.Message);
 			}
 			
+		}
+		[HttpPut]
+		[Route("update/{id}")]
+		public IActionResult UpdateBusById(int id, BusModel busModel)
+		{
+			try {
+				return Ok(_busService.UpdateBusById(id, busModel));
+			}
+			catch(Exception e)
+			{
+				return BadRequest(e.Message);
+			}
 		}
 	}
 }

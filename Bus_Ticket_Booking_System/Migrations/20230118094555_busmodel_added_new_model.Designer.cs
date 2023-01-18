@@ -3,6 +3,7 @@ using System;
 using Bus_Ticket_Booking_System.src.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bus_Ticket_Booking_System.Migrations
 {
     [DbContext(typeof(BusTicketDbContext))]
-    partial class BusTicketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230118094555_busmodel_added_new_model")]
+    partial class busmodel_added_new_model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
