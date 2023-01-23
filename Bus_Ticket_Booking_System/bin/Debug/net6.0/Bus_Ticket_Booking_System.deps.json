@@ -8,11 +8,11 @@
     ".NETCoreApp,Version=v6.0": {
       "Bus_Ticket_Booking_System/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.13",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.12",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.7",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.2",
           "Swashbuckle.AspNetCore": "6.2.3",
-          "Swashbuckle.AspNetCore.Filters": "6.1.0"
+          "Swashbuckle.AspNetCore.Filters": "6.0.1"
         },
         "runtime": {
           "Bus_Ticket_Booking_System.dll": {}
@@ -26,14 +26,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.13": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.12": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.10.0"
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
-            "assemblyVersion": "6.0.13.0",
-            "fileVersion": "6.0.1322.58013"
+            "assemblyVersion": "6.0.12.0",
+            "fileVersion": "6.0.1222.57109"
           }
         }
       },
@@ -312,7 +312,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.Filters/6.1.0": {
+      "Swashbuckle.AspNetCore.Filters/6.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "6.0.0",
           "Microsoft.OpenApi": "1.2.3",
@@ -323,8 +323,8 @@
         },
         "runtime": {
           "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Filters.dll": {
-            "assemblyVersion": "6.1.0.0",
-            "fileVersion": "6.1.0.0"
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
           }
         }
       },
@@ -631,12 +631,12 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.13": {
+    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-D8d0GzKZHFVw2Mru8JUEakQ2eF8obICVtbGFvHsoXmVVQOFkDYRpLaDSMwD4CIeecQNMgriozRRZFJ3kf+Ib+Q==",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.13",
-      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.6.0.13.nupkg.sha512"
+      "sha512": "sha512-rmuhCPoty7f44XoLwQeGlUw0RzGfDBbb48hMqsodbaYi92KPIZJJjf/f2fu+F80LhLWPiCt6ftcCpG9U0nsWUA==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.12",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.6.0.12.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
@@ -876,12 +876,12 @@
       "path": "swashbuckle.aspnetcore.annotations/5.0.0",
       "hashPath": "swashbuckle.aspnetcore.annotations.5.0.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.Filters/6.1.0": {
+    "Swashbuckle.AspNetCore.Filters/6.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1lzzXGE+Uu1SpjdMhj83I60IubSgPCP6kZj87bpoSD4AeZXci8MjDAyv3eqgV0H1q4zIP3xJKbFfmAOtRMbwIg==",
-      "path": "swashbuckle.aspnetcore.filters/6.1.0",
-      "hashPath": "swashbuckle.aspnetcore.filters.6.1.0.nupkg.sha512"
+      "sha512": "sha512-e9n8g5FerM9LEzErUQFIP2YoRK+3LMAQdpOddJgDsyHQE60886l1GSu2UnVzdzTh0TEDHJ0yIjN6ciitjs9Wdw==",
+      "path": "swashbuckle.aspnetcore.filters/6.0.1",
+      "hashPath": "swashbuckle.aspnetcore.filters.6.0.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore.Swagger/6.2.3": {
       "type": "package",

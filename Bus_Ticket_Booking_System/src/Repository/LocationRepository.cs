@@ -13,10 +13,8 @@ namespace Bus_Ticket_Booking_System.src.Repository
 		{
             _busTicketDbContext = busTicketDbContext;
         }
-        public void addLocation(AddLocationModel addLocationModel)
+        public void addLocation(LocationModel location)
         {
-            var location = new LocationModel();
-            location.location = addLocationModel.location;
             _busTicketDbContext.Locations.Add(location);
             _busTicketDbContext.SaveChanges();
         }
@@ -44,6 +42,7 @@ namespace Bus_Ticket_Booking_System.src.Repository
             var location = _busTicketDbContext.Locations.ToList();
             return (location);
         }
+
         public IEnumerable<LocationModel> getLocationById(int id)
         {
             var location = _busTicketDbContext.Locations.Find(id);
@@ -53,6 +52,21 @@ namespace Bus_Ticket_Booking_System.src.Repository
             }
 
             yield return (location);
+        }
+
+        //public LocationModel getLocationByName(string location)
+        //{
+        //    return _busTicketDbContext.Locations.Where(e => e.location == location).FirstOrDefault();
+        //}
+        public IEnumerable<LocationModel> getLocationByName(string location)
+        {
+            var Location = _busTicketDbContext.Locations.Find(location);
+            if (Location == null)
+            {
+                throw new Exception("Not found");
+            }
+
+            yield return (Location);
         }
     }
 }

@@ -15,7 +15,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.13": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.12": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.10.0"
@@ -559,7 +559,7 @@
           }
         }
       },
-      "Swashbuckle.AspNetCore.Filters/6.1.0": {
+      "Swashbuckle.AspNetCore.Filters/6.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
@@ -1171,10 +1171,10 @@
         "logo.png"
       ]
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.13": {
-      "sha512": "D8d0GzKZHFVw2Mru8JUEakQ2eF8obICVtbGFvHsoXmVVQOFkDYRpLaDSMwD4CIeecQNMgriozRRZFJ3kf+Ib+Q==",
+    "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.12": {
+      "sha512": "rmuhCPoty7f44XoLwQeGlUw0RzGfDBbb48hMqsodbaYi92KPIZJJjf/f2fu+F80LhLWPiCt6ftcCpG9U0nsWUA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.13",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/6.0.12",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1182,7 +1182,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
         "lib/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "microsoft.aspnetcore.authentication.jwtbearer.6.0.13.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.6.0.12.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
@@ -1908,16 +1908,16 @@
         "swashbuckle.aspnetcore.annotations.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.Filters/6.1.0": {
-      "sha512": "1lzzXGE+Uu1SpjdMhj83I60IubSgPCP6kZj87bpoSD4AeZXci8MjDAyv3eqgV0H1q4zIP3xJKbFfmAOtRMbwIg==",
+    "Swashbuckle.AspNetCore.Filters/6.0.1": {
+      "sha512": "e9n8g5FerM9LEzErUQFIP2YoRK+3LMAQdpOddJgDsyHQE60886l1GSu2UnVzdzTh0TEDHJ0yIjN6ciitjs9Wdw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.filters/6.1.0",
+      "path": "swashbuckle.aspnetcore.filters/6.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netcoreapp3.0/Swashbuckle.AspNetCore.Filters.dll",
         "lib/netstandard2.0/Swashbuckle.AspNetCore.Filters.dll",
-        "swashbuckle.aspnetcore.filters.6.1.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.filters.6.0.1.nupkg.sha512",
         "swashbuckle.aspnetcore.filters.nuspec"
       ]
     },
@@ -3808,11 +3808,11 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.13",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.7",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.2",
       "Swashbuckle.AspNetCore >= 6.2.3",
-      "Swashbuckle.AspNetCore.Filters >= 6.1.0"
+      "Swashbuckle.AspNetCore.Filters >= 6.0.1"
     ]
   },
   "packageFolders": {
@@ -3854,7 +3854,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
-            "version": "[6.0.13, )"
+            "version": "[6.0.12, )"
           },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -3872,7 +3872,7 @@
           },
           "Swashbuckle.AspNetCore.Filters": {
             "target": "Package",
-            "version": "[6.1.0, )"
+            "version": "[6.0.1, )"
           }
         },
         "imports": [

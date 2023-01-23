@@ -26,7 +26,7 @@ namespace Bus_Ticket_Booking_System.Utilis
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddHours(2),
                 signingCredentials: cred
                 );
 

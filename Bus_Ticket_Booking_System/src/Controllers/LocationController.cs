@@ -3,19 +3,22 @@ using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Models;
 using Bus_Ticket_Booking_System.src.Models.Dto;
 using Bus_Ticket_Booking_System.src.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
-	public class LocationController:ControllerBase
+    
+    [ApiController]
+    [Authorize]
+    public class LocationController:ControllerBase
 	{
 		private readonly ILocationService _locationService;
         public LocationController(ILocationService locationService)
 		{
 			_locationService = locationService;
 		}
-		[HttpPost]
-		[Route("addLocation")]
+		[HttpPost("addLocation")]
 		public IActionResult addLocation(AddLocationModel addLocationModel)
 		{
             try
@@ -28,8 +31,7 @@ namespace Bus_Ticket_Booking_System.src.Controllers
             }
             return Ok();
         }
-        [HttpGet]
-        [Route("getAllLocation")]
+        [HttpGet("getAllLocation")]
         public ActionResult<IEnumerable<LocationModel>> getAllLocations()
         {
             try
@@ -42,8 +44,7 @@ namespace Bus_Ticket_Booking_System.src.Controllers
             }
 
         }
-        [HttpGet]
-        [Route ("gellLocationById/{id}")]
+        [HttpGet("gellLocationById/{id}")]
         public ActionResult<IEnumerable<LocationModel>> getLocationById(int id)
         {
 
@@ -56,8 +57,7 @@ namespace Bus_Ticket_Booking_System.src.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpDelete]
-        [Route("deleteLocation/{id}")]
+        [HttpDelete("deleteLocation/{id}")]
         public IActionResult DeleteLocation(int id)
         {
             try

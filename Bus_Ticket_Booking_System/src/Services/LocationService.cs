@@ -22,7 +22,9 @@ namespace Bus_Ticket_Booking_System.src.Services
             {
                 throw new Exception("Invalid BusName");
             }
-            _locationRepository.addLocation(addLocationModel);
+            var location = new LocationModel();
+            location.location = addLocationModel.location;
+            _locationRepository.addLocation(location);
         }
 
         public string DeleteLocation(int id)

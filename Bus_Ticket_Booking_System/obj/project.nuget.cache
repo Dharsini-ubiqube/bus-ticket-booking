@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "HRN7ZK0U+fDKTIfPN+O9Sny5jsGLP6ZmA/Tih/bsri6F6aK89zfpTM7nBYKSWCuVXffLuHt/QaHbRwh+kpjqjQ==",
+  "dgSpecHash": "EeqxaGd27GWrM+tJCPQvjaxmaQAGsaTEKPgvEY5YPYJ54J5lDwXkVB9bq67M0ttNQ4brQJbb54+san1xZV0/4A==",
   "success": true,
   "projectFilePath": "/Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System.csproj",
   "expectedPackageFiles": [
     "/Users/dharsinikr/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
-    "/Users/dharsinikr/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.13/microsoft.aspnetcore.authentication.jwtbearer.6.0.13.nupkg.sha512",
+    "/Users/dharsinikr/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.12/microsoft.aspnetcore.authentication.jwtbearer.6.0.12.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/microsoft.dotnet.platformabstractions/2.1.0/microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/microsoft.entityframeworkcore/6.0.7/microsoft.entityframeworkcore.6.0.7.nupkg.sha512",
@@ -40,7 +40,7 @@
     "/Users/dharsinikr/.nuget/packages/scrutor/3.0.1/scrutor.3.0.1.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.annotations/5.0.0/swashbuckle.aspnetcore.annotations.5.0.0.nupkg.sha512",
-    "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.filters/6.1.0/swashbuckle.aspnetcore.filters.6.1.0.nupkg.sha512",
+    "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.filters/6.0.1/swashbuckle.aspnetcore.filters.6.0.1.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "/Users/dharsinikr/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",

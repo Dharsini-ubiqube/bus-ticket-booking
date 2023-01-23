@@ -3,6 +3,7 @@ using System;
 using Bus_Ticket_Booking_System.src.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bus_Ticket_Booking_System.Migrations
 {
     [DbContext(typeof(BusTicketDbContext))]
-    partial class BusTicketDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230119112733_busmodel_added_update_db2_primary_key")]
+    partial class busmodel_added_update_db2_primary_key
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,9 +36,6 @@ namespace Bus_Ticket_Booking_System.Migrations
                     b.Property<string>("DestinationLocation")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("Via")
-                        .HasColumnType("varchar(255)");
-
                     b.Property<string>("date")
                         .HasColumnType("longtext");
 
@@ -44,12 +43,6 @@ namespace Bus_Ticket_Booking_System.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("seats")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("seatsBtoVia")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("seatsViatoD")
                         .HasColumnType("int");
 
                     b.Property<string>("time")
@@ -60,8 +53,6 @@ namespace Bus_Ticket_Booking_System.Migrations
                     b.HasIndex("BoardingLocation");
 
                     b.HasIndex("DestinationLocation");
-
-                    b.HasIndex("Via");
 
                     b.ToTable("Buses");
                 });
@@ -77,42 +68,6 @@ namespace Bus_Ticket_Booking_System.Migrations
                     b.HasKey("location");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("Bus_Ticket_Booking_System.src.Models.TicketModel", b =>
-                {
-                    b.Property<int>("ticketId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("busId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("date")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("end")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("numberOfSets")
-                        .HasColumnType("int");
-
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
-                    b.Property<string>("start")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("userEmail")
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("ticketId");
-
-                    b.HasIndex("busId");
-
-                    b.HasIndex("userEmail");
-
-                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("Bus_Ticket_Booking_System.src.Models.UserModel", b =>
@@ -147,32 +102,9 @@ namespace Bus_Ticket_Booking_System.Migrations
                         .WithMany()
                         .HasForeignKey("DestinationLocation");
 
-                    b.HasOne("Bus_Ticket_Booking_System.src.Models.LocationModel", "Location3")
-                        .WithMany()
-                        .HasForeignKey("Via");
-
                     b.Navigation("Location1");
 
                     b.Navigation("Location2");
-
-                    b.Navigation("Location3");
-                });
-
-            modelBuilder.Entity("Bus_Ticket_Booking_System.src.Models.TicketModel", b =>
-                {
-                    b.HasOne("Bus_Ticket_Booking_System.src.Models.BusModel", "bus")
-                        .WithMany()
-                        .HasForeignKey("busId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bus_Ticket_Booking_System.src.Models.UserModel", "user")
-                        .WithMany()
-                        .HasForeignKey("userEmail");
-
-                    b.Navigation("bus");
-
-                    b.Navigation("user");
                 });
 #pragma warning restore 612, 618
         }

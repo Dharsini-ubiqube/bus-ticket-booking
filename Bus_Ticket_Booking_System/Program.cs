@@ -5,6 +5,7 @@ using Bus_Ticket_Booking_System.src.Repository;
 using Bus_Ticket_Booking_System.src.Services;
 using Bus_Ticket_Booking_System.Utilis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -40,7 +41,12 @@ builder.Services.AddTransient<IUserService , UserService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IBusService, BusService>();
 builder.Services.AddTransient<IBusRepository, BusRepository>();
+builder.Services.AddTransient<ILocationService, LocationService>();
+builder.Services.AddTransient<ILocationRepository, LocationRepository>();
 builder.Services.AddSingleton <IJwtTokenUtilis, JwtTokenUtilis>();
+builder.Services.AddTransient<ITicketRepository, TicketRepository>();
+builder.Services.AddTransient<ITicketService, TicketService>();
+
 
 
 builder.Services.AddScoped<BusTicketDbContext>();
@@ -49,10 +55,10 @@ builder.Services.AddScoped<BusTicketDbContext>();
 builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
     options =>
     {
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my favourite token is here thank you")),
+            ValidateIssuerSigningKey = false,
+            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my favourite token is here thank you")),
             ValidateIssuer = false,
             ValidateAudience = false
         };
@@ -68,6 +74,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 
