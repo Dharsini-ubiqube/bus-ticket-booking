@@ -18,15 +18,47 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    //c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    //{
+    //    Description = "Standard Authorization using bearer scheme (\"Bearer {token}\" ) ",
+    //    In = ParameterLocation.Header,
+    //    Name = "Authorization",
+    //    Type = SecuritySchemeType.ApiKey
+    //});
+
+    //c.OperationFilter<SecurityRequirementsOperationFilter>();
     c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
-        Description = "Standard Authorization using bearer scheme (\"Bearer {token}\" ) ",
-        In = ParameterLocation.Header,
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows()
+        {
+            Implicit = new OpenApiOAuthFlow()
+            {
+                AuthorizationUrl = new Uri("https://login.microsoftonline.com/4cc72284-2d70-4529-b0f3-4e09ebc55558/oauth2/v2.0/authorize"),
+                TokenUrl = new Uri("https://login.microsoftonline.com/4cc72284-2d70-4529-b0f3-4e09ebc55558/oauth2/v2.0/token"),
+                Scopes = new Dictionary<string, string> {
+                        {
+                            "api://d70bdf82-3ba7-4b12-85cf-791485a16116/ReadAccess",
+                            "Reads all bus ticket booking"
+                        }
+                    }
+            }
+        }
     });
-
-    c.OperationFilter<SecurityRequirementsOperationFilter>();
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement() {
+    {
+        new OpenApiSecurityScheme {
+            Reference = new OpenApiReference {
+                    Type = ReferenceType.SecurityScheme,
+                        Id = "oauth2"
+                },
+                Scheme = "oauth2",
+                Name = "oauth2",
+                In = ParameterLocation.Header
+        },
+        new List < string > ()
+    }
+});
 });
 
 
@@ -51,18 +83,17 @@ builder.Services.AddTransient<ITicketService, TicketService>();
 
 builder.Services.AddScoped<BusTicketDbContext>();
 
-
-builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
-    options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = false,
-            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my favourite token is here thank you")),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-    });
+//builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+//    options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuerSigningKey = false,
+//            IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my favourite token is here thank you")),
+//            ValidateIssuer = false,
+//            ValidateAudience = false
+//        };
+//    });
 
 var app = builder.Build();
 
@@ -70,7 +101,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "AzureAD_OAuth_API v1");
+        //c.RoutePrefix = string.Empty;
+        c.OAuthClientId("d70bdf82-3ba7-4b12-85cf-791485a16116");
+        c.OAuthClientSecret("Dpc8Q~qrNYoSY4.vHA1TwKqqUl1jv2En~7FHCaE_");
+        c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+    });
 }
 
 app.UseHttpsRedirection();

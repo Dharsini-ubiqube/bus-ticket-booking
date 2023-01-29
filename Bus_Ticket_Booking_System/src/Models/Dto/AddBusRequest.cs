@@ -14,7 +14,7 @@ namespace Bus_Ticket_Booking_System.src.Models.Dto
         public int? seatsBtoVia { get; set; }
         public int? seatsViatoD { get; set; }
         public string? time { get; set; }
-        public string? date { get; set; }
+        public DateTime date { get; set; }
     }
 }
 

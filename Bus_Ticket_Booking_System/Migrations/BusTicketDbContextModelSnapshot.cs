@@ -37,8 +37,8 @@ namespace Bus_Ticket_Booking_System.Migrations
                     b.Property<string>("Via")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("date")
-                        .HasColumnType("longtext");
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int?>("price")
                         .HasColumnType("int");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using Bus_Ticket_Booking_System.Interfaces.Repositories;
 using Bus_Ticket_Booking_System.src.Data;
 using Bus_Ticket_Booking_System.src.Models;
@@ -28,8 +29,35 @@ namespace Bus_Ticket_Booking_System.src.Repository
 
         public IEnumerable<BusModel> getAllbuses()
         {
+            updateAllbusesByDate();
             var bus = _busTicketDbContext.Buses.Include(e => e.Location1).Include(e => e.Location2).Include(e => e.Location3).ToList();
             return (bus);
+        }
+        public void updateAllbusesByDate()
+        {
+            var bus = _busTicketDbContext.Buses.ToList();
+            for(int i=0;i<bus.Count; i++)
+            {
+                var busModel = _busTicketDbContext.Buses.Find(bus[i].id);
+                var ticketAll = _busTicketDbContext.Tickets.ToList();
+                var currentDate = DateTime.UtcNow;
+                int seatsOccupy = 0;
+                if (currentDate > busModel.date)
+                {
+                    var seatsleft = busModel.seats;
+                    for (int j = 0; j < ticketAll.Count; j++)
+                    {
+                        seatsOccupy = seatsOccupy + ticketAll[j].numberOfSets;
+                    }
+
+                    busModel.seats = seatsOccupy + seatsleft;
+                    busModel.seatsBtoVia = seatsOccupy + seatsleft;
+                    busModel.seatsViatoD = seatsOccupy + seatsleft;
+                    busModel.date=busModel.date.AddDays(4);
+
+                }
+            }
+          
         }
 
         public string deleteBuses(int id)
@@ -88,7 +116,8 @@ namespace Bus_Ticket_Booking_System.src.Repository
         //}
         public BusModel getByBoardingandDestination(string BoardingLocation, string DestinationLocation, string date)
         {
-            return _busTicketDbContext.Buses.Where(e =>  (e.BoardingLocation == BoardingLocation||e.Via== BoardingLocation) && (e.DestinationLocation == DestinationLocation ||e.Via== DestinationLocation) && e.date == date ).FirstOrDefault();
+            updateAllbusesByDate();
+            return _busTicketDbContext.Buses.Where(e =>  (e.BoardingLocation == BoardingLocation||e.Via== BoardingLocation) && (e.DestinationLocation == DestinationLocation ||e.Via== DestinationLocation) && e.date.Equals(date) ).FirstOrDefault();
             
         }
 

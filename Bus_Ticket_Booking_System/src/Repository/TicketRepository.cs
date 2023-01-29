@@ -18,10 +18,25 @@ namespace Bus_Ticket_Booking_System.src.Repository
         public void bookTicket(TicketModel ticket)
         {
             var busModel = _busTicketDbContext.Buses.Find(ticket.busId);
+            var ticketAll = _busTicketDbContext.Tickets.ToList();
+            var currentDate = DateTime.UtcNow;
+            int seatsOccupy = 0;
+            if (currentDate > busModel.date)
+            {
+                throw new Exception("Date of journey is not applicable");
+
+
+            }
+            if(busModel.seats ==0)
+            {
+                throw new Exception("seats are not available");
+            }
             if (busModel != null && (ticket.start==busModel.BoardingLocation && ticket.end==busModel.DestinationLocation) )
             {
                 ticket.price = (int)busModel.price * ticket.numberOfSets;
                 busModel.seats = busModel.seats - ticket.numberOfSets;
+                busModel.seatsBtoVia = busModel.seatsBtoVia - ticket.numberOfSets;
+                busModel.seatsViatoD = busModel.seatsViatoD - ticket.numberOfSets;
             }
             else if (busModel != null && (ticket.start == busModel.BoardingLocation && ticket.end == busModel.Via))
             {
@@ -39,8 +54,10 @@ namespace Bus_Ticket_Booking_System.src.Repository
             {
                 throw new Exception("Bus is not available as per your request");
             }
+            
+           
             ticket.date = DateTime.UtcNow.ToString("yyyyMMdd");
-
+            
             try
             {
                 _busTicketDbContext.Tickets.Add(ticket);
@@ -51,6 +68,7 @@ namespace Bus_Ticket_Booking_System.src.Repository
                 Console.WriteLine(e.InnerException.Message);
                 throw new Exception(e.InnerException.Message);
             }
+           
 
         }
         public IEnumerable<TicketModel> getAllBookings()
