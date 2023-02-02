@@ -5,11 +5,14 @@ using Bus_Ticket_Booking_System.src.Repository;
 using Bus_Ticket_Booking_System.src.Services;
 using Bus_Ticket_Booking_System.Utilis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 
@@ -27,19 +30,20 @@ builder.Services.AddSwaggerGen(c =>
     //});
 
     //c.OperationFilter<SecurityRequirementsOperationFilter>();
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Bus Ticket Booking Api", Version = "v1" });
     c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.OAuth2,
         Flows = new OpenApiOAuthFlows()
         {
-            Implicit = new OpenApiOAuthFlow()
+            AuthorizationCode = new OpenApiOAuthFlow()
             {
-                AuthorizationUrl = new Uri("https://login.microsoftonline.com/4cc72284-2d70-4529-b0f3-4e09ebc55558/oauth2/v2.0/authorize"),
-                TokenUrl = new Uri("https://login.microsoftonline.com/4cc72284-2d70-4529-b0f3-4e09ebc55558/oauth2/v2.0/token"),
+                AuthorizationUrl = new Uri(builder.Configuration["AuthorizationUrl"]),
+                TokenUrl = new Uri(builder.Configuration["TokenUrl"]),
                 Scopes = new Dictionary<string, string> {
                         {
-                            "api://d70bdf82-3ba7-4b12-85cf-791485a16116/ReadAccess",
-                            "Reads all bus ticket booking"
+                            builder.Configuration["ApiScope"],
+                            "Access the Api"
                         }
                     }
             }
@@ -52,11 +56,11 @@ builder.Services.AddSwaggerGen(c =>
                     Type = ReferenceType.SecurityScheme,
                         Id = "oauth2"
                 },
-                Scheme = "oauth2",
-                Name = "oauth2",
-                In = ParameterLocation.Header
+                //Scheme = "oauth2",
+                //Name = "oauth2",
+                //In = ParameterLocation.Header
         },
-        new List < string > ()
+        new [] {builder.Configuration["ApiScope"] }
     }
 });
 });
@@ -85,7 +89,7 @@ builder.Services.AddTransient<ITicketService, TicketService>();
 
 builder.Services.AddScoped<BusTicketDbContext>();
 
-//builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 //    options =>
 //    {
 //        options.TokenValidationParameters = new TokenValidationParameters
@@ -107,9 +111,10 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "AzureAD_OAuth_API v1");
         //c.RoutePrefix = string.Empty;
-        c.OAuthClientId("d70bdf82-3ba7-4b12-85cf-791485a16116");
-        c.OAuthClientSecret("Dpc8Q~qrNYoSY4.vHA1TwKqqUl1jv2En~7FHCaE_");
-        c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+        c.OAuthClientId(builder.Configuration["AzureAd:ClientId"]);
+        //c.OAuthClientSecret(builder.Configuration["ClientSecretKey"]);
+        c.OAuthUsePkce();
+        //c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
     });
 }
 

@@ -5,11 +5,14 @@ using Bus_Ticket_Booking_System.src.Models.Dto;
 using Bus_Ticket_Booking_System.src.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
-	[ApiController]
-    //[Authorize]
+    [RequiredScope(RequiredScopesConfigurationKey = "AzuredAd:Scopes")]
+    [Authorize]
+    [ApiController]
+    
     public class TicketController:ControllerBase
 	{
         private readonly ITicketService _ticketService;

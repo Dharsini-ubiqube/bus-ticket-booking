@@ -5,12 +5,13 @@ using Bus_Ticket_Booking_System.src.Models.Dto;
 using Bus_Ticket_Booking_System.src.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
-    
+    [RequiredScope(RequiredScopesConfigurationKey = "AzuredAd:Scopes")]
+    [Authorize]
     [ApiController]
-    //[Authorize]
     public class LocationController:ControllerBase
 	{
 		private readonly ILocationService _locationService;
