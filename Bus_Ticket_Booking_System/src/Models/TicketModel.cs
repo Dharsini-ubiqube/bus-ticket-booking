@@ -14,12 +14,16 @@ namespace Bus_Ticket_Booking_System.src.Models
         public string? userEmail { get; set; }
 		public int numberOfSets { get; set; }
 		public int price { get; set; }
-		public string? date { get; set; }
+		public DateTime date { get; set; }
         public string? start { get; set; }
         public string?end{ get; set; }
         public virtual BusModel  bus { get; set; }
         public virtual UserModel user { get; set; }
 
+        public static implicit operator string(TicketModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

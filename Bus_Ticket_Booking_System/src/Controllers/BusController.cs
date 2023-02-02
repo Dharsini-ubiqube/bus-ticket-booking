@@ -9,7 +9,7 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 {
 	
 	[ApiController]
-	[Authorize]
+	//[Authorize]
 	public class BusController : ControllerBase
 	{
 		private readonly IBusService _busService;

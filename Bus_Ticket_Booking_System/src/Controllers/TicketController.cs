@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
 	[ApiController]
-    [Authorize]
+    //[Authorize]
     public class TicketController:ControllerBase
 	{
         private readonly ITicketService _ticketService;

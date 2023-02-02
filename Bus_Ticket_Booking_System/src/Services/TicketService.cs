@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 using Bus_Ticket_Booking_System.Interfaces.Repositories;
 using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Models;
@@ -34,6 +35,10 @@ namespace Bus_Ticket_Booking_System.src.Services
         public IEnumerable<TicketModel> getBookingByEmail(string email)
         {
             return (_ticketRepository.getBookingByEmail(email));
+        }
+        public void SendMail(string emailBody)
+        {
+            
         }
     }
 }

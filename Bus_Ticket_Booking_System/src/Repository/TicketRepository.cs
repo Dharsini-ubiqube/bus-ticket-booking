@@ -2,7 +2,9 @@
 using Bus_Ticket_Booking_System.Interfaces.Repositories;
 using Bus_Ticket_Booking_System.src.Data;
 using Bus_Ticket_Booking_System.src.Models;
+using MailKit.Net.Smtp;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 
 namespace Bus_Ticket_Booking_System.src.Repository
 {
@@ -54,9 +56,9 @@ namespace Bus_Ticket_Booking_System.src.Repository
             {
                 throw new Exception("Bus is not available as per your request");
             }
-            
-           
-            ticket.date = DateTime.UtcNow.ToString("yyyyMMdd");
+
+            SendMail(ticket);
+            //ticket.date = DateTime.UtcNow.ToString("yyyyMMdd");
             
             try
             {
@@ -85,6 +87,27 @@ namespace Bus_Ticket_Booking_System.src.Repository
             }
 
            return (booking);
+        }
+        public void SendMail(TicketModel ticket)
+        {
+            var busModel = _busTicketDbContext.Buses.Find(ticket.busId);
+            var dateandtime = busModel.date;
+            var date = dateandtime.ToShortDateString();
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Bus Ticket Confirmation", "yuvarajbusapp@gmail.com"));
+            message.To.Add(new MailboxAddress("", ticket.userEmail));
+            message.Subject = "Bus Ticket Confirmation";
+            message.Body = new TextPart(MimeKit.Text.TextFormat.Plain)
+            {
+                Text = "Your ticket was confirmed with \u2009 "+ ticket.numberOfSets + "\u2009seats\u2009" + date + "\u2009 from\u2009" + ticket.start + "\u2009to\u2009" + ticket.end + "\u2009at\u2009" + busModel.time + "\u2009 Be ready at your borading location\u2009" + ticket.start + "\u2009 10 mins before.\n" + "Thank you visiting us! Have a safe journey!" ,
+            };
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.gmail.com", 587, false);
+                client.Authenticate("yuvarajbusapp@gmail.com", "ohcdqbhxsfuykenj");
+                client.Send(message);
+                client.Disconnect(true);
+            }
         }
 
     }
