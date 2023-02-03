@@ -58,8 +58,6 @@
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.Identity.Web.Certificate.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.Identity.Web.Certificateless.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.Identity.Web.TokenCache.dll
-/Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.Identity.Web.UI.Views.dll
-/Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.Identity.Web.UI.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.IdentityModel.LoggingExtensions.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/Microsoft.IdentityModel.Validators.dll
@@ -78,3 +76,4 @@
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/MailKit.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/MimeKit.dll
 /Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/BouncyCastle.Crypto.dll
+/Users/dharsinikr/Documents/DotNet/Bus_Ticket_Booking_System/Bus_Ticket_Booking_System/bin/Debug/net6.0/AspNet.Security.OAuth.Validation.dll

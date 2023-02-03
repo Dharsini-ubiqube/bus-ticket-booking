@@ -9,7 +9,7 @@ using Microsoft.Identity.Web.Resource;
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
 	[RequiredScope (RequiredScopesConfigurationKey = "AzuredAd:Scopes")]
-    [Authorize]
+	[Authorize]
     [ApiController]
 	public class BusController : ControllerBase
 	{

@@ -12,8 +12,11 @@ namespace Bus_Ticket_Booking_System.src.Repository
 	{
         private readonly BusTicketDbContext _busTicketDbContext;
         private readonly IBusRepository _busRepository;
-        public TicketRepository(BusTicketDbContext busTicketDbContext,IBusRepository busRepository)
+        private readonly IConfiguration _config;
+
+        public TicketRepository(BusTicketDbContext busTicketDbContext,IBusRepository busRepository, IConfiguration config)
         {
+            _config = config;
             _busTicketDbContext = busTicketDbContext;
             _busRepository = busRepository;
         }
@@ -94,17 +97,17 @@ namespace Bus_Ticket_Booking_System.src.Repository
             var dateandtime = busModel.date;
             var date = dateandtime.ToShortDateString();
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Bus Ticket Confirmation", "yuvarajbusapp@gmail.com"));
+            message.From.Add(new MailboxAddress(_config.GetSection("MailBody").Value, _config.GetSection("MailId").Value));
             message.To.Add(new MailboxAddress("", ticket.userEmail));
-            message.Subject = "Bus Ticket Confirmation";
+            message.Subject = _config.GetSection("MailBody").Value;
             message.Body = new TextPart(MimeKit.Text.TextFormat.Plain)
             {
                 Text = "Your ticket was confirmed with \u2009 "+ ticket.numberOfSets + "\u2009seats\u2009" + date + "\u2009 from\u2009" + ticket.start + "\u2009to\u2009" + ticket.end + "\u2009at\u2009" + busModel.time + "\u2009 Be ready at your borading location\u2009" + ticket.start + "\u2009 10 mins before.\n" + "Thank you visiting us! Have a safe journey!" ,
             };
             using (var client = new SmtpClient())
             {
-                client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("yuvarajbusapp@gmail.com", "ohcdqbhxsfuykenj");
+                client.Connect(_config.GetSection("SmtpMail").Value, 587, false);
+                client.Authenticate(_config.GetSection("MailId").Value, _config.GetSection("Password").Value);
                 client.Send(message);
                 client.Disconnect(true);
             }

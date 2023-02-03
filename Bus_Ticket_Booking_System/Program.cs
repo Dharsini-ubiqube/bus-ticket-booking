@@ -1,10 +1,14 @@
-﻿using Bus_Ticket_Booking_System.Interfaces.Repositories;
+﻿using AspNet.Security.OAuth.Validation;
+using Bus_Ticket_Booking_System.Interfaces.Repositories;
 using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Data;
 using Bus_Ticket_Booking_System.src.Repository;
 using Bus_Ticket_Booking_System.src.Services;
 using Bus_Ticket_Booking_System.Utilis;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -12,24 +16,27 @@ using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-// Add services to the container.
-
 builder.Services.AddControllers();
+
+Console.WriteLine(builder.Configuration.GetSection("TokenUrl"));
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+builder.Services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+    var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+    options.Events.OnTokenValidated = async context =>
+    {
+        await existingOnTokenValidatedHandler(context);
+        options.TokenValidationParameters.ValidIssuers = new[] { "https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0" };
+        options.TokenValidationParameters.ValidAudiences = new[] { "b3928819-0855-44bf-873c-15de7c8bc46e" };
+    };
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    //c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-    //{
-    //    Description = "Standard Authorization using bearer scheme (\"Bearer {token}\" ) ",
-    //    In = ParameterLocation.Header,
-    //    Name = "Authorization",
-    //    Type = SecuritySchemeType.ApiKey
-    //});
-
-    //c.OperationFilter<SecurityRequirementsOperationFilter>();
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Bus Ticket Booking Api", Version = "v1" });
     c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
@@ -56,17 +63,11 @@ builder.Services.AddSwaggerGen(c =>
                     Type = ReferenceType.SecurityScheme,
                         Id = "oauth2"
                 },
-                //Scheme = "oauth2",
-                //Name = "oauth2",
-                //In = ParameterLocation.Header
         },
         new [] {builder.Configuration["ApiScope"] }
     }
 });
 });
-
-
-
 
 
 builder.Services.AddDbContext<BusTicketDbContext>(options =>
@@ -89,7 +90,6 @@ builder.Services.AddTransient<ITicketService, TicketService>();
 
 builder.Services.AddScoped<BusTicketDbContext>();
 
-builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme).AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
 //    options =>
 //    {
 //        options.TokenValidationParameters = new TokenValidationParameters
@@ -101,6 +101,7 @@ builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer
 //        };
 //    });
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -109,12 +110,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "AzureAD_OAuth_API v1");
-        //c.RoutePrefix = string.Empty;
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Online_Bus_Ticket_Booking v1");
+
         c.OAuthClientId(builder.Configuration["AzureAd:ClientId"]);
-        //c.OAuthClientSecret(builder.Configuration["ClientSecretKey"]);
+  
         c.OAuthUsePkce();
-        //c.OAuthUseBasicAuthenticationWithAccessCodeGrant();
+        c.OAuthScopeSeparator(" ");
     });
 }
 
