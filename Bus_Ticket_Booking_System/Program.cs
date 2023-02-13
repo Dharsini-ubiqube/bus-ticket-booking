@@ -104,8 +104,8 @@ builder.Services.AddScoped<BusTicketDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
@@ -116,7 +116,7 @@ if (app.Environment.IsDevelopment())
         c.OAuthUsePkce();
         c.OAuthScopeSeparator(" ");
     });
-}
+//}
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

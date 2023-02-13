@@ -1,28 +1,34 @@
 ﻿<Properties StartupConfiguration="{F1EA78EE-B3AB-45CA-BBA7-1252F7507D3B}|Default">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Bus_Ticket_Booking_System/src/Services/UserService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Bus_Ticket_Booking_System/src/Controllers/TicketController.cs">
     <Files>
-      <File FileName="Bus_Ticket_Booking_System/Program.cs" Line="7" Column="42" />
-      <File FileName="Bus_Ticket_Booking_System/src/Models/UserModel.cs" Line="10" Column="22" />
-      <File FileName="Bus_Ticket_Booking_System/src/Data/BusTicketDbContext.cs" />
-      <File FileName="Bus_Ticket_Booking_System/appsettings.json" Line="10" Column="265" />
-      <File FileName="Bus_Ticket_Booking_System/src/Controllers/UserController.cs" Line="71" Column="1" />
-      <File FileName="Bus_Ticket_Booking_System/src/Services/UserService.cs" Line="65" Column="1" />
-      <File FileName="Bus_Ticket_Booking_System/src/Repository/UserRepository.cs" Line="17" Column="10" />
+      <File FileName="Bus_Ticket_Booking_System/Program.cs" Line="31" Column="53" />
+      <File FileName="Bus_Ticket_Booking_System/src/Models/UserModel.cs" Line="8" Column="7" />
+      <File FileName="Bus_Ticket_Booking_System/src/Data/BusTicketDbContext.cs" Line="8" Column="36" />
+      <File FileName="Bus_Ticket_Booking_System/appsettings.json" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/UserController.cs" Line="58" Column="79" />
+      <File FileName="Bus_Ticket_Booking_System/src/Services/UserService.cs" Line="54" Column="36" />
+      <File FileName="Bus_Ticket_Booking_System/src/Repository/UserRepository.cs" Line="31" Column="1" />
       <File FileName="Bus_Ticket_Booking_System/src/Models/Dto/UserAddRequest.cs" Line="8" Column="9" />
       <File FileName="Bus_Ticket_Booking_System/src/Models/BusModel.cs" />
-      <File FileName="Bus_Ticket_Booking_System/src/Controllers/BusController.cs" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/BusController.cs" Line="97" Column="53" />
       <File FileName="Bus_Ticket_Booking_System/src/Repository/BusRepository.cs" />
       <File FileName="Bus_Ticket_Booking_System/src/Services/BusService.cs" />
       <File FileName="Bus_Ticket_Booking_System/src/Models/ResponseModel.cs" />
-      <File FileName="Bus_Ticket_Booking_System/Utilis/AuthUtilis.cs" Line="16" Column="1" />
-      <File FileName="Bus_Ticket_Booking_System/Utilis/IJwtTokenUtilis.cs" Line="13" Column="1" />
-      <File FileName="Bus_Ticket_Booking_System/Utilis/JwtTokenUtilis.cs" Line="20" Column="31" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/AuthUtilis.cs" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/IJwtTokenUtilis.cs" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/JwtTokenUtilis.cs" />
       <File FileName="Bus_Ticket_Booking_System/src/Models/Dto/UserAddLogin.cs" />
-      <File FileName="Bus_Ticket_Booking_System/src/Interfaces/Services/IUserService.cs" Line="15" Column="44" />
-      <File FileName="Bus_Ticket_Booking_System/src/Interfaces/Repositories/IUserRepository.cs" Line="9" Column="23" />
-      <File FileName="Bus_Ticket_Booking_System/src/Properties/launchSettings.json" Line="30" Column="2" />
+      <File FileName="Bus_Ticket_Booking_System/src/Interfaces/Services/IUserService.cs" />
+      <File FileName="Bus_Ticket_Booking_System/src/Interfaces/Repositories/IUserRepository.cs" />
+      <File FileName="Bus_Ticket_Booking_System/src/Properties/launchSettings.json" />
+      <File FileName="Bus_Ticket_Booking_System/src/Interfaces/Repositories/IBusRepository.cs" Line="1" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/ClaimRequirementFilter.cs" Line="31" Column="43" />
+      <File FileName="Bus_Ticket_Booking_System/Utilis/ClaimRequirementAttribute.cs" Line="9" Column="16" />
+      <File FileName="Bus_Ticket_Booking_System/src/Services/TicketService.cs" Line="1" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Repository/TicketRepository.cs" Line="1" Column="1" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/LocationController.cs" Line="14" Column="49" />
+      <File FileName="Bus_Ticket_Booking_System/src/Controllers/TicketController.cs" Line="52" Column="53" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -41,10 +47,9 @@
                   <Node name="Dto" expanded="True" />
                 </Node>
                 <Node name="Repository" expanded="True" />
-                <Node name="Services" expanded="True">
-                  <Node name="UserService.cs" selected="True" />
-                </Node>
+                <Node name="Services" expanded="True" />
               </Node>
+              <Node name="Utilis" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -52,8 +57,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Bus__Ticket__Booking__System PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
