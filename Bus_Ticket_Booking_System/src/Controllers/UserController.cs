@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Data;
 using Bus_Ticket_Booking_System.src.Models;
@@ -39,7 +40,7 @@ namespace Bus_Ticket_Booking_System.src.Controllers
             try
             {
                 var genericResponse = new ResponseModel<string>();
-                genericResponse.message = _userService.verifyUser(userAddRequest);
+                //genericResponse.message = _userService.verifyUser(userAddRequest);
 
 
                 return Ok(genericResponse);
@@ -49,6 +50,21 @@ namespace Bus_Ticket_Booking_System.src.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        [HttpGet("storeUser")]
+        public ActionResult SaveUserDetails()
+        {
+            var email = HttpContext.User.FindFirstValue("preferred_username");
+            string name = User.FindFirst("name").Value;
+
+            var user = new UserAddRequest();
+            user.Email = email;
+            user.Name = name;
+
+            _userService.SaveUserProfile(user);
+
+            return Ok();
         }
     }
 }

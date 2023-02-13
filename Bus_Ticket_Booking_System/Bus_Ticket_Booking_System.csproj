@@ -23,6 +23,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.25.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,9 +36,6 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="src\Models\Dto\" />
     <None Remove="src\Data\" />
-    <None Remove="Interfaces\" />
-    <None Remove="Interfaces\Services\" />
-    <None Remove="Interfaces\Repositories\" />
     <None Remove="Utilis\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <None Remove="Swashbuckle.AspNetCore.Filters" />
@@ -47,6 +45,9 @@
     <None Remove="MailKit" />
     <None Remove="Microsoft.AspNetCore.Authentication" />
     <None Remove="Microsoft.AspNetCore.Identity" />
+    <None Remove="src\Interfaces\" />
+    <None Remove="src\Properties\" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
@@ -56,9 +57,18 @@
     <Folder Include="src\Services\" />
     <Folder Include="src\Models\Dto\" />
     <Folder Include="src\Data\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Interfaces\Repositories\" />
     <Folder Include="Utilis\" />
+    <Folder Include="src\Interfaces\" />
+    <Folder Include="src\Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="src\Properties\launchSettings.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Properties\launchSettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
   </ItemGroup>
 </Project>

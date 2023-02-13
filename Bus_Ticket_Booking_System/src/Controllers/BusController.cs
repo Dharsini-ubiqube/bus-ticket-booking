@@ -2,6 +2,7 @@
 using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Models;
 using Bus_Ticket_Booking_System.src.Models.Dto;
+using Bus_Ticket_Booking_System.Utilis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
@@ -20,7 +21,8 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 		}
 
 		[HttpPost("AddBuses")]
-		public IActionResult addBuses(AddBusRequest busModel)
+        [ClaimRequirementAttribute("role", "ADMIN")]
+        public IActionResult addBuses(AddBusRequest busModel)
 		{
 			try
 			{
@@ -34,7 +36,8 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 		}
 
 		[HttpGet("GetAllBuses")]
-		public ActionResult<IEnumerable<BusModel>> getAllbuses()
+        [ClaimRequirementAttribute("role", "ADMIN")]
+        public ActionResult<IEnumerable<BusModel>> getAllbuses()
 		{
 			try
 			{
@@ -48,7 +51,8 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 		}
 
 		[HttpGet("GetBusById/{id}")]
-		public ActionResult<IEnumerable<BusModel>> getBusById(int id)
+        [ClaimRequirementAttribute("role", "ADMIN")]
+        public ActionResult<IEnumerable<BusModel>> getBusById(int id)
 		{
 
 			try
@@ -75,7 +79,8 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 
 		[HttpDelete]
 		[Route("deleteBuses/{id}")]
-		public IActionResult DeleteBuses( int id)
+        [ClaimRequirementAttribute("role", "ADMIN")]
+        public IActionResult DeleteBuses( int id)
 		{
 			try
 			{
@@ -89,7 +94,8 @@ namespace Bus_Ticket_Booking_System.src.Controllers
 		}
 		[HttpPut]
 		[Route("update/{id}")]
-		public IActionResult UpdateBusById(int id, BusModel busModel)
+        [ClaimRequirementAttribute("role", "ADMIN")]
+        public IActionResult UpdateBusById(int id, BusModel busModel)
 		{
 			try {
 				return Ok(_busService.UpdateBusById(id, busModel));

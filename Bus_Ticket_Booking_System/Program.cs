@@ -4,7 +4,7 @@ using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Data;
 using Bus_Ticket_Booking_System.src.Repository;
 using Bus_Ticket_Booking_System.src.Services;
-using Bus_Ticket_Booking_System.Utilis;
+//using Bus_Ticket_Booking_System.Utilis;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -72,8 +72,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<BusTicketDbContext>(options =>
 {
-    var connString = builder.Configuration.GetConnectionString("DevConnection");
-    options.UseMySql(connString, ServerVersion.AutoDetect(connString));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"));
 });
 
 builder.Services.AddTransient<IUserService , UserService>();
@@ -82,7 +81,7 @@ builder.Services.AddTransient<IBusService, BusService>();
 builder.Services.AddTransient<IBusRepository, BusRepository>();
 builder.Services.AddTransient<ILocationService, LocationService>();
 builder.Services.AddTransient<ILocationRepository, LocationRepository>();
-builder.Services.AddSingleton <IJwtTokenUtilis, JwtTokenUtilis>();
+//builder.Services.AddSingleton <IJwtTokenUtilis, JwtTokenUtilis>();
 builder.Services.AddTransient<ITicketRepository, TicketRepository>();
 builder.Services.AddTransient<ITicketService, TicketService>();
 

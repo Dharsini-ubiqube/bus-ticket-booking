@@ -5,12 +5,10 @@ namespace Bus_Ticket_Booking_System.src.Models
 {
 	public class UserModel
 	{
-        public Guid Id { get; set; }
-        public string? name { get; set; }
+        public string? Name { get; set; }
         [Key]
-        public string? email { get; set; }
-        public string? password { get; set; }
-        public bool isAdmin { get; set; } = false;
+        public string Email { get; set; }
+        public string? role { get; set; } = "USER";
          
     }
 }

@@ -3,6 +3,7 @@ using Bus_Ticket_Booking_System.Interfaces.Services;
 using Bus_Ticket_Booking_System.src.Models;
 using Bus_Ticket_Booking_System.src.Models.Dto;
 using Bus_Ticket_Booking_System.src.Services;
+using Bus_Ticket_Booking_System.Utilis;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
@@ -10,7 +11,7 @@ using Microsoft.Identity.Web.Resource;
 namespace Bus_Ticket_Booking_System.src.Controllers
 {
     [RequiredScope(RequiredScopesConfigurationKey = "AzuredAd:Scopes")]
-    [Authorize]
+    [ClaimRequirementAttribute("role", "ADMIN")]
     [ApiController]
     public class LocationController:ControllerBase
 	{

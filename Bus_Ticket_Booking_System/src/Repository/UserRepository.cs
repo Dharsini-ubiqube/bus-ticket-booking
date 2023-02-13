@@ -19,10 +19,9 @@ namespace Bus_Ticket_Booking_System.src.Repository
 		public void addUser(UserAddRequest userAddRequest)
 		{
 			var user = new UserModel();
-			user.email = userAddRequest.email;
-			user.name = userAddRequest.name;
-			user.password = userAddRequest.password;
-
+			user.Email = userAddRequest.Email;
+			user.Name = userAddRequest.Name;
+			
 			_busTicketDbContext.Users.Add(user);
 			_busTicketDbContext.SaveChanges();
         }
